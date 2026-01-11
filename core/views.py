@@ -1062,3 +1062,4 @@ def submit_feedback(request):
             return JsonResponse({'success': 'Thank you! Your feedback has been submitted successfully'})
         except Exception as e:
             return JsonResponse({'error': 'unable to submit feedback'})
+        
