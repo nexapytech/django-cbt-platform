@@ -1,0 +1,366 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="{% static 'css/my_exams.css' %}?v=1.0">
+<link rel="stylesheet" href="{% static  'css/upload.css' %}?v=1.0">
+
+<link rel="stylesheet" href="{% static 'css/exam_settings.css' %}?v=1.0">
+
+
+
+<body>
+
+<!-- Header with navigation for Questions, Responses, and Settings -->
+<header class="form-small-header">
+    <nav class="nav-header">
+        <ul>
+            <li><a href="#questions-section" class="nav-link" id="questions-tab">Questions</a></li>
+            <li><a href="#responses-section" class="nav-link" id="responses-tab">Responses</a></li>
+            <li><a href="#settings-section" class="nav-link" id="settings-tab">Settings</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Exam Details Section -->
+<section class="my-exams-container content-section"   id="questions-section" >
+    <header class="form-header">
+        <h2>Create Your Exam   <span class="data-save" style="font-size: small; font-weight: lighter; "><i> </i></span></h2><br>
+
+    </header>
+
+    <!-- Exam Details -->
+    <div class="exam-details">
+        <input type="hidden" id="exam-uuid" value="{{ exam.uuid }}" >
+        <input type="text" placeholder="Untitled Exam" maxlength="70" id="exam-title" value="{{ exam.title }}"  name="exam-title" class="exam-title" required />
+        <textarea placeholder="Exam description..." id="exam-description" maxlength="200"  name="exam-description"  class="exam-description" required>{{exam.description }}</textarea>
+    </div>
+    <div id="questions-container">
+        {% for question in json_question %}
+        <div class="questions-builder">
+
+            <div class="question-item">
+                <p class="question-number">{{forloop.counter}}</p>
+                <input type="text" placeholder="Question Title" value="{{question.title}}" name="question-title" class="question-title" required />
+                <select class="question-type" name="select-option">
+                    <option value="multiple-choice" {% if question.type == 'multiple-choice' %}selected{% endif %}>Multiple Choice</option>
+                    <option value="short-answer" {% if question.type == 'short-answer' %}selected{% endif %}>Short Answer</option>
+                    <option value="paragraph" {% if question.type == 'paragraph' %}selected{% endif %}>Paragraph</option>
+                </select>
+                <div class="question-options-container">
+                    <div class="short-answer-options" style="border-bottom: 1px dashed grey; {% if question.type == 'short-answer' %}display: block;{% else %}display: none;{% endif %}">
+
+                        <input type="text" placeholder="type question answer" value="{{question.answers}}"  class="short-text-answer  answer"  required/>
+                    </div>
+                    <div class="paragraph-options" style="border-bottom: 1px dashed grey; {% if question.type == 'paragraph' %}display: block;{% else %}display: none;{% endif %};">
+
+                        <input type="text" placeholder="Enter paragraph text answer" value="{{question.answers}}" class="paragraph-text-answer  answer"  required/>
+                    </div>
+                    <div class="multiple-choice-options" style="{% if question.type == 'multiple-choice' %}display: block;{% else %}display: none;{% endif %}">
+                       {%for option in question.options %}
+                        <div class="option-item">
+                            <label class="option-label">
+                                <input type="radio" name="multiple-choice" class="option-radio" disabled />
+                                <input type="text"  value="{{option}}" placeholder="Option 1" class="option-text" />
+                            </label>
+                            <button type="button" class="delete-option"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        {%endfor%}
+                        <button class="add-option">+ Add Option</button>
+                        <div class="select-answer">
+                        <select class="select-answer-dropdown multichoice-answer" style="display: block;" required>
+                            <option value="" disabled selected>Select Correct Answer</option>
+                            <option  value="{{question.answers}}"{%if question.answers %} selected {%endif%} > {%if question.answers %} {{question.answers}} {%endif%}</option>
+
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="delete-question">Delete Question</button>
+            </div>
+        </div>
+        {% endfor %}
+
+        <button id="add-question" class="btn-add-question">+ Add Question</button>
+        <div class="upload-file-section"style="padding-top:20px">
+            <button id="upload-file-question" class="exclude-save btn-upload-question  " > <i class="fa-solid fa-file-excel"></i> Upload Questions </button> 
+            </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Exam Controls -->
+    <div class="exam-actions">
+        <form action="{% url 'publish_exam' %}" method="POST" id="publish-exam">
+            {%csrf_token%}
+             <input type="hidden" id="exam-uuid" value="{{ exam.uuid }}" name="uuid">
+
+        <button class="btn-publish exclude-save"  type="submit"><i class="fa fa-spinner" aria-hidden="true" style="display:none;"></i>
+           <span class="publishtext"> Publish Exam</span>
+        </button>
+
+        </form>
+    </div>
+
+
+</section>
+
+
+
+
+<!-- Student Registration Settings Section -->
+
+
+<div class="settings-section content-section" id="settings-section">
+
+    <form   id="settingsForm"  action="{% url 'my_exam_settings' %}" method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+
+    <input type="hidden" id="exam-uuid" value="{{ exam.uuid }}" name="uuid">
+    <div class="settings-container">
+        <div class="settings_header">CBT Exam Settings</div><hr class="custom-hr-gradient">
+
+        <!-- Exam Configurations -->
+        {% if exam_settings %}
+        <div class="form-group">
+            <label class="settings_header" for="time-limit">Exam Time Limit (in seconds):</label>
+            <input type="number" min="1" value ="{{exam_settings.countdown_time}}" placeholder="Exam Time Limit (in seconds)" name="time-limit" required>
+        </div><hr class="custom-hr-gradient ">
+
+        <div class="form-group">
+            <div class="flex-box">
+                <div class="headers">
+            <label class="settings_header">Shuffle Questions</label>
+            <p>In Computer-Based Testing (CBT), shuffle questions randomize question  to  ensure fair assessments.</p>
+            </div>
+            <div class="toggle-switch">
+                <!-- Rounded switch -->
+                    <label class=" switch">
+                        <input type="checkbox" value="on" name="shuffle-questions" {% if exam_settings.shuffle_questions %} checked {%else%} none {%endif%}  unchecked >
+                        <span class="slider round"></span>
+                    </label>
+
+            </div>
+            </div>
+        </div><hr class="custom-hr-gradient">
+
+        <div class="form-group">
+            <div class="flex-box">
+                <div class="headers">
+            <label class="settings_header">Enable Feedback   </label>
+            <p>Exam feedback in CBT provides detailed insights into performance, highlighting strengths, areas for improvement, and helping guide future study efforts.</p>
+            </div>
+            <div class="toggle-switch">
+               <!-- Rounded switch -->
+               <label class="switch">
+                <input   type="checkbox"  value="on" {% if exam_settings.enable_feedback %} checked {%else%} none {%endif%} name="enable-feedback">
+                <span class="slider round"></span>
+            </label>
+            </div>
+            </div>
+        </div><hr class="custom-hr-gradient">
+
+
+
+        <!-- File Upload for Candidates -->
+        <div class="form-group">
+            <label class="settings_header" for="candidate-file">Upload Candidate List (TXT/CSV/Excel)</label>
+            <p>Select Method:</p>
+            <div class="select-option">
+            <select class="candidate-list" name="candidate-method">
+                <option value="reg-no" {% if exam_settings.select_method == 'reg-no'  %} selected {%endif%}  >Reg No</option>
+                <option value="email"  {% if exam_settings.select_method == 'email'  %} selected {%endif%} >Email</option>
+                <option value="surname"  {% if exam_settings.select_method == 'surname'  %} selected {%endif%} >Surname</option>
+            </select>
+            </div>
+            <input  style="color:#007bff"type="file" id="candidate-file" accept=".csv, .xlsx, .txt" name="candidate-file">
+            <p id="file-name-display">current file:{% if exam_settings.uploaded_file  %}{{exam_settings.uploaded_file}} {%else%}  None {%endif%}</p>
+        </div>
+        {%endif%}
+
+        <div class="form-group">
+
+            <button class="exclude-save" type="submit">
+                <i class="fa fa-spinner  settingsicon" aria-hidden="true" style="display:none;"></i>
+                <span class="settingtext">Save Settings</span>
+            </button>
+
+
+        </div>
+
+    </div>
+
+</form>
+</div>
+
+<!-- Responses Section -->
+<section class="responses-section content-section" id="responses-section">
+    <div class="container mt-4">
+        <h1 class="mb-4">CBT Candidate Responses</h1>
+        {% if exam_response  %}
+
+        <!-- Filters Section -->
+        <div class="row mb-3">
+             <!-- Export Buttons -->
+        <form action="{% url 'export_to_excel' exam_id=exam.uuid %}" id="exportData" method="post" >
+            {% csrf_token %}
+        <div class="export button" >
+            <input type="hidden" class="exam-id" value="{{exam.uuid}}">
+            <button type="submit"class="btn btn-success me-2">Export to Excel</button>
+
+        </div>
+        </form>
+        <!-- Response Table -->
+
+        <div class="table-responsive">
+            {% for response in exam_response %}
+                <table class="table table-bordered" id="table-{{response.candidate_id}}">
+                    <thead class="table-dark">
+                        <tr style="white-space: nowrap;">
+                            <th>Candidate ID</th>
+                            <th >Score / {{total_exam}}</th>
+                            <th>Percentage (100%)</th>
+                            <th>Exam Status</th>
+                            <th>Time Taken</th>
+                            <th>Result Status</th>
+                            <th>FeedBack</th>
+                            <th>Submitted At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{response.candidate_id}}</td>
+                            <td>{{response.score}}</td>
+                            <td>{{response.percentage}}</td>
+                            <td  style="white-space: nowrap;">{% if response.end_exam%}<i style="color:#0c500c" class="fa-solid fa-circle-check"></i> <b>Completed</b> {% else %} <i style="color:#1581ac" class="fa-solid fa-circle-info"> <b>In Progress</b> </i> {% endif %}</td>
+                            <td>{{exam_settings.countdown_time}} secs.</td>
+                            <td>{% if response.status %} Pass {% else %} Fail {% endif %}</td>
+                            <td>{{response.feedback}}</td>
+                            <td>{{response.submitted_at}} <i>UTC+1</i></td>
+                            <td>
+                                <button class="delete-response" exam-id="{{exam.uuid}}" data-id="{{response.candidate_id}}">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
+
+
+{%else%}
+<p>no  response</p>
+{%endif%}
+       </div>
+
+       </div>
+
+
+
+
+</section>
+    <!-- Popup Modal -->
+    <div class="popupmodal" id="popup-modal" style="display: none;">
+        <div class="popupmodal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h3>Exam Published!</h3>
+            <p>Copy the exam URL below:</p>
+
+            <!-- URL Display -->
+            <input type="text" id="exam-url" class="url-box" readonly>
+
+            <!-- Copy Button -->
+            <button class="copy-button" id="copy-url">Copy URL</button>
+
+            <!-- Success Message -->
+            <div id="copy-message" class="message" style="display: none;">URL copied to clipboard!</div>
+        </div>
+    </div>
+
+<!------------------------------------------------------upload questions-------------------------------------->
+
+<div id="upload-modal-container">
+    <div class="upload-modal">
+        <div class="upload-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Upload Questions</h2>
+            <p>Please upload your questions in the specified Excel format. Download a <a href="{% static   'doc/sample_questions_format.xlsx'%}" style="color: #007bff; text-decoration: underline;" download>sample file</a>.</p>
+            <form id="uploadFormQuestion" method="POST" action="{% url 'upload_questions' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" class="exam-id" name="exam-id" value="{{exam.uuid}}">
+                <input type="file" name="questions_excel_file" accept=".xlsx" required>
+                <button type="submit">Upload</button>
+            </form>
+            <div class="sample-format">
+                <p><strong>Sample Excel Format:</strong></p>
+                <table style="width:100%; border-collapse: collapse;">
+                    <tr style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                        <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Title</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Answers</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Options</th>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="padding: 8px; border: 1px solid #ddd;">multiple-choice</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">What is Python?</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Python is a programming language</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Python is a programming language, It is a snake</td>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="padding: 8px; border: 1px solid #ddd;">short-answer</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">What is C++?</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">A programming language</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">(Leave blank)</td>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="padding: 8px; border: 1px solid #ddd;">paragraph</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">explain python programming</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">A programming language is low level language</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">(Leave blank)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Close the modal
+    document.querySelector('#upload-modal-container .close-btn').addEventListener('click', function () {
+        document.querySelector('#upload-modal-container .upload-modal').style.display = 'none';
+    });
+    document.querySelector('.btn-upload-question').addEventListener('click', function () {
+        document.querySelector('#upload-modal-container .upload-modal').style.display = 'block';
+    });
+
+
+</script>
+
+</body>
+</html>
+
+
+<script src="{% static 'js/myexam.js' %}?v=1.0"></script>
+
+<script src="{% static 'js/upload_questions.js' %}?v=1.0"></script>
+<script type="module" src="{% static 'js/save_exam.js' %}?v=1.0"></script>
+
+<script type="module" src="{% static 'js/questions.js' %}?v=1.0"></script>
+<!-- Pass the subscription status from Django to JavaScript -->
+<script>
+    
+</script>
+</body>
+{% endblock %}
+

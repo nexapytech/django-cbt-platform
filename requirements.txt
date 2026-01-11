@@ -1,0 +1,11 @@
+Django
+PyMySQL
+openpyxl
+requests
+python-decouple
+numpy==1.25.0
+pandas
+spacy==3.6.0
+pillow
+whitenoise
+six

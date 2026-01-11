@@ -1,0 +1,185 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    margin: 0;
+   
+}
+.exam-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 150px; 
+}
+/* Exam Header Styles */
+.exam-header {
+    position: fixed;
+     top: 0; left: 0; 
+    width: 100%; background-color: #fff; z-index: 1000;
+     padding: 15px; text-align: center; 
+     border-bottom: 2px solid #e0e0e0; 
+     border-radius: 10px;
+     max-height: 180px; 
+     display: flex;
+     gap: 150px;
+      justify-content: space-between; 
+     align-items: center;
+}
+.exam-header h1 {
+    margin: 0; 
+    font-size:25px; 
+    color: #54546b;
+}
+.exam-header p {
+    font-size: 15px;
+    color: #536e6e;
+    margin: 5px 0;
+}
+.exam-header #exam-timer {
+    font-size: 1.3rem;
+     font-weight: bold;
+      color: #1ab348;
+       margin-top: 10px;
+}
+.question-item {
+    margin-bottom: 40px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.question-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* Styling the input field */
+.form-control {
+width: 100%;                /* Make the input take up the full width */
+padding: 12px 20px;         /* Padding for better spacing inside the input */
+font-size: 16px;            /* Increase font size for better readability */
+border: 1px solid #ced4da;  /* Light gray border */
+border-radius: 5px;         /* Rounded corners for the input */
+background-color: #f8f9fa;  /* Light background color */
+transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition on focus */
+resize: none;
+}
+
+/* Focus effect when the user clicks the input field */
+.form-control:focus {
+border-color: #007bff;      /* Change border to blue on focus */
+box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  /* Subtle blue shadow */
+outline: none;              /* Remove the default outline */
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+color: #6c757d;             /* Placeholder color */
+font-style: italic;         /* Italicize the placeholder */
+opacity: 1;                 /* Ensure placeholder is visible */
+}
+
+/* Add a slight margin at the bottom for better spacing */
+
+/* Styling for required fields that are empty */
+.form-control.invalid {
+border-color: red;
+background-color: #f8d7da;  /* Light red background */
+box-shadow: 0 0 5px rgba(255, 0, 0, 0.2); /* Soft red shadow */
+}
+
+/* For smaller screens, reduce padding */
+@media (max-width: 768px) {
+
+/* Exam Header Styles */
+.exam-header {
+    position: fixed;
+     top: 0; left: 0; 
+    width: 100%; background-color: #fff; z-index: 1000;
+     padding: 10px; text-align: center; 
+     border-bottom: 2px solid #e0e0e0; 
+     border-radius: 10px;
+     max-height: 180px; 
+     display: inline-block;
+     gap: 100px;
+      justify-content: space-between; 
+     align-items: center;
+}
+.exam-header h1 {
+    margin: 0; 
+    font-size:20px; 
+    color: #54546b;
+}
+
+.form-control {
+padding: 10px 15px;
+}
+}
+
+.endexam-btn {
+background-color: #007bff;
+color: #fff;
+border: none;
+padding: 10px 10px 10px 10px;
+margin-right: 50px;
+cursor: pointer;
+font-size: 15px;
+border-radius: 5px;
+
+}
+
+.endexam-btn:hover {
+background-color: #aa0e0e;
+}
+
+
+.fa-spinner{
+animation: animate 1s ease infinite;
+
+}
+@keyframes animate {
+0%{transform: rotate(0turn);
+}
+100%{
+transform: rotate(1turn)
+}
+
+}
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+.login-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.login-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.login-container button:hover {
+    background-color: #0056b3;
+}
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}

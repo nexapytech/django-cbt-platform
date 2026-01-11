@@ -1,0 +1,228 @@
+
+
+{% extends 'base.html' %}
+{% block title %}Dashboard - NexapyCBT{% endblock %}
+
+
+{% load static %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Meta Information for SEO -->
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Meta Information for SEO -->
+    <!-- Meta Information for SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create, Take, and Manage Computer-Based Tests Easily with Nexapy CBT. A simple, powerful platform for educators and learners to handle CBTs securely and flexibly.">
+    <meta name="keywords" content="Nexapy CBT, Computer-Based Tests, online exams, CBT platform, flexible testing, secure exams, Nexapy Technologies">
+    <meta name="author" content="Nexapy Technologies">
+
+    <!-- Title -->
+    <title>Nexapy CBT - dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/nexapytech.png' %}">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Nexapy CBT - Simplify Computer-Based Testing">
+    <meta property="og:description" content="We bring you a simple, powerful platform to create, take, and manage Computer-Based Tests (CBTs) for any subject or purpose.">
+    <meta property="og:image" content="https://nexapytechnologies.com/static/images/nexapytech.png">
+    <meta property="og:url" content="https://nexapytechnologies.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexapy CBT - Simplify Online Exams">
+    <meta name="twitter:description" content="Easily create, take, and manage Computer-Based Tests (CBTs) with Nexapy CBT. A flexible and secure platform for all testing needs.">
+    <meta name="twitter:image" content="https://nexapytechnologies.com/static/images/nexapytech.png">
+
+
+</head>
+<p id="screen">page cannot ve viewd on your device screen size</p>
+<body>
+{% if not email_verified%}
+<div class="verification-header">
+    <form method="POST" id="verification" action="{% url 'resend-verification' %}">
+        {%csrf_token %}
+    <span class=" notification">Email not verified! Please verify your email to have full- access to dashboard. Resend verification email if needed.  <i class="fa fa-spinner  resendbtn-spinner" aria-hidden="true" style="display:none;"></i>
+
+        <i class="fa fa-spinner  resendbtn-spinner" aria-hidden="true" style="display:none"></i>
+        <a id="resend-text"style="color:#b12222">resend</a>
+</form>
+
+</div>
+{%endif%}
+
+
+<section class="dashboard">
+    <div class="container">
+        <!-- Welcome Message -->
+        <div class="welcome">
+            <h2>Welcome back,  <span style="color:
+            #005f72;"><b>{{request.user.username}}</b> </span></h2>
+            <p>Here’s what’s happening on your account:</p>
+        </div>
+
+        <!-- Quick Overview Cards -->
+        <div class="overview">
+            <div class="card">
+
+                <h3>Total Exams</h3>
+                {%if exams %}
+                <p>{{total_exam}}</p>
+                {%else%}
+                <p>0</p>
+                {%endif%}
+
+            </div>
+
+            <div class="card">
+                <h3>Total Participants</h3>
+                {%if exam_response %}
+                <p>{{exam_response}}</p>
+                {%else%}
+                <p>0</p>
+                {%endif%}
+            </div>
+            <div class="card">
+
+                <h3>Total Exam Published</h3>
+                {% if is_published %}
+                <p>{{is_published}}</p>
+
+                {%else%}
+                <p>0</p>
+                {%endif%}
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <h3>Recent Activity</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if exams %}
+                    {% for exam in exams %}
+                    <tr>
+                        <td style="font-weight: 510">{{exam.title |upper}}</td>
+                        <td>{{exam.updated_at}}  <i>(UTC + 1)</i></td>
+
+                        <td class="action-button">{%if exam.published_url %}<a target="_blank" href="{{exam.published_url}}"><button style="background-color: #0f500f" type="submit"> View Exam</button></a>{%endif%}   <a href="{{edit_exam}}/{{exam.uuid}}" target="_blank"><button type="submit"> Edit Exam</button></a>
+                          
+                            <span > <a href="{%url 'delete_exam' exam.uuid %}" data-id="{{exam.uuid}}" class="delete-exam"id="deleteExam"><button style="background-color:#b12222" type="submit"> Delete Exam</button></a></span> </td>
+                          
+
+                          
+                    </tr>
+                    {%endfor%}
+                    {%else%}
+                    <tr>
+                        <td style="font-weight: 510">you have no recent activities</td>
+
+
+                    </tr>
+                    {%endif%}
+
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <h3>Quick Actions</h3>
+            <a href="{% url 'my_exams' %}"> <button class="action-btn">+ Create New Exam</button> </a>
+
+        </section>
+
+
+
+
+
+
+<script>
+
+    document.addEventListener('click', async (event) => {
+        // Check if the clicked element has the `delete-exam` class
+         deleteLink = event.target.closest('.delete-exam')
+        if (deleteLink) {
+
+            event.preventDefault(); // Prevent default link beh
+            // avior
+
+            const examId = deleteLink.getAttribute('data-id'); // Get the ID
+
+            try {
+            // Send a POST request to the server for deletion
+            const response = await fetch(`/delete_exam/${examId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+            });
+
+            // Parse the response
+            const data = await response.json();
+
+            if (data.message) {
+                // Successfully deleted, remove the row
+                const row = deleteLink.closest('tr');
+                row.remove();
+            } else {
+                // Handle errors returned by the server
+                alert(data.error || 'Failed to delete the exam.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    }
+});
+
+</script>
+<script src="{% static  'js/all-js.js'%}?v=1.0"> </script>
+<script src="{% static  'js/verified.js'%}?v=1.0"> </script>
+
+
+<footer>
+
+
+    <ul class="social-icons">
+
+     <li><a href="https://www.facebook.com/share/1KzEyXuW1x/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.twitter.com/nexapytech" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/nexapytechnologies" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                     <li><a href="https://www.instagram.com/nexapytechnologies" target="_blank"><i class="fab fa-instagram"></i></a></li>
+
+
+
+        <!-- Add more social links with Font Awesome icons as needed -->
+      </ul>
+      <p  style="padding:5px"><a style="color: #2c8bca;" href="mailto:developer@nexapytechnologies.com">developer@nexapytechnologies.com</a></p>
+
+    <p>&copy; 2025 Nexapy Technologies. All rights reserved.</p>
+</footer>
+
+
+</body>
+{%endblock%}

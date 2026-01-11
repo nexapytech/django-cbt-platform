@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Login</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #dadbdd;
+        }
+        .form-group {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 5px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            resize: none;
+        }
+        .login-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .login-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+
+        }
+        .login-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Provide Your Feedback</h1>
+            <p>
+                We would love to hear your thoughts about your exam experience. Please share your feedback below.
+            </p>
+
+            <form id="feedbackForm" method="POST" action="{% url 'feedback_response' exam.uuid}">
+                <input type="hidden" id="exam-id" value="{{exam.uuid}}">
+
+            {%csrf_token%}
+                <div class="form-group">
+
+                <textarea id="feedback"  name="feed" maxlength="120"    rows="5" placeholder="Write your feedback here..." required></textarea>
+            </div>
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <a href="{{exam.published_url}}" class="back-link">&larr; Back to Exam</a>
+    </div>
+
+    <script src="{% static   'js/feedback.js' %}?v=1.0">  </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>

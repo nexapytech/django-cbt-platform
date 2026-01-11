@@ -1,0 +1,94 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ exam.title }} - CBT Exam</title>
+
+    <!-- External Stylesheet (Optional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/take_exam.css' %}?v=1.0.0 ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Favicon -->
+<link rel="icon" href="{% static 'images/nexapytech.png' %}?v=1.0.0 ">
+
+</head>
+<body>
+    <!-- Main Exam Container -->
+    <div class="exam-container">
+        <!-- Exam Header -->
+        <div class="exam-header" >
+            <div style="text-align: left; flex-grow: 1;">
+                <h1 >{{ exam.title|upper }}</h1>
+                <p >{{ exam.description }}</p>
+                <div id="exam-timer">
+                    Time Left: 00:00:00
+
+                </div>
+                <div id="alert" class="alert" style="color:red"></div>
+                <p style="display:none;" class="data-save"></p>
+            </div>
+            <form  method="POST"  id="endForm"    action="{% url 'end_exam' %}" >
+                {% csrf_token %}
+            <input type="hidden"   name="candidate-id"id="candidate-id" value="{{candidate_id}}" >
+            <input type="hidden"   name='exam-uuid' id="exam-uuid" value="{{ exam.uuid }}" >
+            <input type="hidden"   name="publish-id" id="publish-id" name="publish-id" value={{exam.published_hash}} >
+            <button class="endexam-btn exclude-save" type="submit" >
+                <i class="fa fa-spinner  examendicon" aria-hidden="true" style="display:none;"></i>
+                <span id="endexam-btn-text"> End Exam </span>
+            </button>
+            </form>
+        </div>
+        </div>
+
+        <!-- Questions Section -->
+
+            <!-- Questions Rendered Dynamically -->
+            {% for question in questions_data %}
+
+            <div class="question-item"  data-id="{{question.id }}">
+
+                <input type="hidden" id="exam-uuid" value="{{ exam.uuid }}" >
+                <input type="hidden" id="published_hash" value="{{ exam.published_hash }}" >
+                <p class="question-text">{{ forloop.counter }}. {{ question.title }}</p>
+
+                <!-- Multiple Choice Options -->
+                {% if question.type == "multiple-choice" %}
+                {% for option in question.options%}
+                <div class="form-check">
+                    <input class="form-check-input form-type" type="radio" value="{{option}}" autocomplete="off"  name="question_{{ forloop.parentloop.counter }}" >
+                    <label class="form-check-label">{{ option }}</label>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                  <!-- Paragraph Answer -->
+                  {% if question.type == "paragraph" %}
+                  <textarea name="question_{{ forloop.counter }}" autocomplete="off" class="paragraphInput form-control form-type" rows="4" placeholder="Write your answer here..."  ></textarea>
+                  {% endif %}
+
+                <!-- Short Answer -->
+                {% if question.type == "short-answer" %}
+                <input type="text" name="question_{{ forloop.counter }}" autocomplete="off" class="form-control form-type form-text-input"  placeholder="Enter your answer" >
+                {% endif %}
+
+
+            </div>
+            {% endfor %}
+
+
+
+    </div>
+
+    <!-- Timer Countdown Script -->
+
+<script>
+
+const examDuration = {{ settings.countdown_time}};
+</script>
+    <script type="module" src="{% static 'js/take_exam_save.js' %}"></script>
+</body>
+</html>

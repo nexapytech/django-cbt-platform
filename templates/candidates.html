@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Login</title>
+    <!-- Favicon -->
+<link rel="icon" href="{% static 'images/nexapytech.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="https://cbt.nexapytechnologies.com">
+    <meta name="description" content="Nexapy CBT by Nexapy Technologies helps you create, take, and manage Computer-Based Tests easily and securely. Perfect for educators and learners.">
+    <meta name="keywords" content="Nexapy CBT, Computer-Based Tests, online exams, CBT platform, flexible testing, secure exams, Nexapy Technologies">
+    <meta name="author" content="Nexapy Technologies">
+    <!-- Favicon -->
+     <link rel="icon" href="{% static 'images/nexapytech.png' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'css/candidate.css' %}?v=1.0">
+
+<body>
+    <div class="login-container">
+        <h1>Login to Exam</h1>
+        <form id="login-form" method="post" action="{% url 'verify_login' %}">
+            {%csrf_token%}
+            <P>{{exam.title | upper }} </p>
+               <div class="input-field">
+                <input type="hidden" id="exam-uuid" value="{{ exam.uuid }}" >
+                <input type="hidden" id="publish-id" name="publish-id" value={{exam.published_hash}}>
+            <input
+            {% if id.select_method == 'email' %}
+              type="email"
+            {% else %}
+              type="text"
+            {% endif %}
+           id="reg-number" name="reg_number" placeholder="Enter {{id.select_method}}" required autocomplete="off" >
+            </div>
+            <button type="submit">Start Exam</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+
+
+<script>//--------------------------------------candidate-------------------------------
+    // Handle form submission
+    // clear caches
+document.addEventListener("DOMContentLoaded", function()  {
+    // Clear localStorage
+    localStorage.clear();
+    console.log("Local storage cleared!");
+
+
+})
+
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        // Get input values
+        const uuid = document.getElementById("exam-uuid").value.trim();
+        const publishID = document.getElementById("publish-id").value.trim();
+        const id = document.getElementById("reg-number").value.trim();
+
+        if (!publishID || !id) {
+            // Display error if any field is empty
+
+            document.getElementById("error-message").textContent = "Both fields are required.";
+            return;
+        }
+
+        // Make an AJAX POST request to verify registration number and exam title
+        fetch('/verify_login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken':csrfToken
+            },
+
+            body: JSON.stringify({ candidate_id: id, publish_id: publishID , uuid:uuid})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+
+                window.location.reload()
+
+            }if(data.invalid) {
+                // Display error message
+                document.getElementById("error-message").textContent = data.invalid || "Invalid candidate id.";
+            }
+            if(data.candidate_exists) {
+                // Display error message
+                document.getElementById("error-message").textContent = data.candidate_exists
+            }
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("error-message").textContent = "An error occurred. Please try again.";
+        });
+    });
+
+
+    </script>
+</body>
+</html>
