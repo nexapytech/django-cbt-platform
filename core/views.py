@@ -40,8 +40,6 @@ from django.urls import reverse
 import uuid
 from django.views.decorators.cache import never_cache
 
-
-
 def Send_Email_Verification_msg(request, user):
    try:
     current_site  = get_current_site(request)
@@ -66,11 +64,7 @@ def Send_Email_Verification_msg(request, user):
 def normalize_answer(answer):
     # Normalize by removing extra spaces and converting to lowercase
     return re.sub(r'\s+', ' ', answer.strip()).lower()
-
-
 import spacy
-
-
 
 # Load the spaCy model
 # Load the spaCy model
@@ -453,7 +447,7 @@ def dashboard(request):
         # Attempt to fetch the Email_Verification object
         email_verify = get_object_or_404(Email_Verification, user=user)
 
-    except:
+    except Exception as e:
         # Handle the case where the object does not exist or other errors
         email_verify = None  # Ensure email_verify is defined
 
@@ -618,7 +612,7 @@ def Upload_Question(request):
 
             except Exception as e:
                 return  JsonResponse({'error':f"Error processing the file"})
-  except:
+  except Exception as e:
         return redirect('dashboard')
 
 
@@ -635,7 +629,7 @@ def delete_exam(request, exam_id):
                 exam.delete()
                 return JsonResponse({'message': 'Exam deleted successfully'}, status=200)
         return JsonResponse({'error': 'Invalid request method'}, status=400)
-    except:
+    except Exception as e:
         return redirect('/')
 @csrf_exempt
 def delete_response(request, exam_id,  candidate_id):
@@ -771,10 +765,6 @@ def verify_exam_login(request):
                 # Always release the lock, even if error occurs
                 request.session["is_logging_in"] = False
 
-
-
-
-
 def view_exam(request, uuid, published_hash):
 
     reload_count = 0
@@ -801,13 +791,8 @@ def view_exam(request, uuid, published_hash):
         if not candidate_id:
             return render(request, 'candidates.html', exam_method_context)
 
-
-
         # Check if the candidate has already attempted the exam
         try:
-
-
-
             is_candidate_login = get_object_or_404(ExamAnswer, exam=exam, candidate_id=candidate_id)
 
             if is_candidate_login.is_candidate_logined and not is_candidate_login.end_exam:
@@ -856,15 +841,10 @@ def view_exam(request, uuid, published_hash):
             else:
                 return render(request, 'candidates.html', exam_method_context)
 
-        except:
+        except Exception as e:
             is_candidate_login = None
             return render(request, 'candidates.html', exam_method_context)
-
-
-
-
-
-    except:
+    except Exception as e:
         return  render(request, 'candidates.html', exam_method_context)
 @login_required(login_url='signin')
 def my_exam_settings(request):
@@ -922,16 +902,6 @@ def save_exam_answer(request):
             return JsonResponse({'error': f'An error occurred: {str(e)}'}, status=500)
 
     return JsonResponse({'error': 'Invalid request method.'}, status=405)
-
-
-
-
-
-
-
-
-
-
 @csrf_exempt
 def save_exam(request):
     if request.method == 'POST':
@@ -1090,5 +1060,5 @@ def submit_feedback(request):
 
             #request.session.flush()
             return JsonResponse({'success': 'Thank you! Your feedback has been submitted successfully'})
-        except:
+        except Exception as e:
             return JsonResponse({'error': 'unable to submit feedback'})
