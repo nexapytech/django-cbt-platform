@@ -24,9 +24,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
-      - name: Install spaCy model
+      - name: Install spaCy model (local wheel)
         run: |
-          python -m spacy download en_core_web_md    
+          pip install AI_spacy_models/en_core_web_md-3.6.0-py3-none-any.whl   
 
       - name: Apply Migrations
         run: |

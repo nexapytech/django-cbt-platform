@@ -16,6 +16,24 @@ With the flexibility to create, manage, and participate in Computer-Based Tests 
 - Secure exam delivery
 - NLP-powered features using spaCy
 
+## NLP & spaCy Integration
+
+NexapyCBT integrates spaCy to enhance evaluation of non-multiple-choice (theory/subjective) questions.
+
+How it works:
+
+Theory answers are processed using text similarity techniques
+
+Student responses are compared with expected answers
+
+spaCy’s pretrained language model enables semantic similarity matching
+
+This allows fair grading even when students use different wording
+
+Instructors can still review or override results when necessary
+
+This approach improves automated assessment while keeping human oversight where required.
+
 ## 🛠 Tech Stack
 
 - Python 3.11
@@ -24,6 +42,7 @@ With the flexibility to create, manage, and participate in Computer-Based Tests 
 - Docker
 - spaCy
 - Python Decouple
+-spaCy (NLP for text similarity)
 
 ## 🐧 Tested On  Linux(recommended)
 
