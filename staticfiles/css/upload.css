@@ -1,0 +1,108 @@
+/* Scoped Styling for Upload Modal */
+#upload-modal-container {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+}
+
+#upload-modal-container .upload-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#upload-modal-container .upload-modal-content {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border-radius: 10px;
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#upload-modal-container .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+}
+
+#upload-modal-container .close-btn:hover {
+    color: #f44336;
+}
+
+#upload-modal-container h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+#upload-modal-container textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    resize: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+#upload-modal-container textarea:focus {
+    outline: none;
+    border-color: #1da1f2;
+}
+
+#upload-modal-container input[type="file"] {
+    margin-top: 15px;
+}
+
+#upload-modal-container .sample-format {
+    margin-top: 20px;
+    background-color: #f1f8ff;
+    border: 1px solid #cce5ff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    color: #004085;
+}
+
+#upload-modal-container button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#upload-modal-container button:hover {
+    background-color: #218838;
+}
+
+
+@media  (max-width:600px) {
+    #upload-modal-container .sample-format {
+
+        display: none;
+    }   
+}

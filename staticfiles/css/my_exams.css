@@ -1,0 +1,1020 @@
+/* Global Styles */
+    /* Basic page styling */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+   
+
+    /* Popup Modal */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .url-box {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .copy-button {
+        padding: 8px 12px;
+        cursor: pointer;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .copy-button:hover {
+        background-color: #218838;
+    }
+
+    .close-modal {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    }
+
+    .close-modal:hover {
+        color: #000;
+    }
+
+    .message {
+        color: green;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+/* Header Navigation Bar */
+.form-small-header {
+    background-color: #aad2d6;
+    padding: 10px 20px;
+    border-bottom: 3px solid #004d40;
+}
+
+.nav-header ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.nav-header li {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #004d40;
+    color: #f7f7f7;
+}
+
+.nav-link.active {
+    background-color: #004d40;
+}
+
+/* Main Container for the Exam Form */
+.my-exams-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   
+}
+
+/* Exam Title and Description */
+.exam-details input,
+.exam-details textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    resize: none;
+    
+}
+
+.exam-details textarea {
+    height: 100px;
+}
+
+/* Questions Section */
+.questions-builder {
+    margin-top: 20px;
+}
+
+.question-item {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-number{
+text-align: center;
+padding: 10px;
+font-weight: bold;
+
+}
+
+
+
+.question-item select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.question-item .question-title{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+
+}
+
+.question-options {
+    margin-top: 10px;
+    display: none;
+}
+
+.question-options input {
+    width: 48%;
+    margin-right: 4%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.question-options button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.question-options button:hover {
+    background-color: #45a049;
+}
+
+/* Add and Delete Question Buttons */
+.btn-add-question {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add-question:hover {
+    background-color: #0056b3;
+}
+
+.delete-question {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-question:hover {
+    background-color: #c82333;
+}
+
+
+
+/* Exam Controls (Save & Publish) */
+.exam-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.exam-actions button {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+}
+
+.btn-publish {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-publish:hover {
+    background-color: #c82333;
+}
+
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .my-exams-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .nav-header ul {
+        flex-direction: column;
+    }
+
+    .nav-header li {
+        margin: 10px 0;
+    }
+
+    .question-options input {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .exam-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .exam-actions button {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+/* Borderless Input */
+.no-border-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    
+    background-color: transparent;
+}
+
+.no-border-input:focus {
+    border: 1px solid #007BFF; /* Highlighted underline on focus */
+}
+
+
+
+ 
+
+
+#paragraph-response{
+display:none;
+
+}
+/* Option item */
+.option-item {
+    display: flex;
+    align-items: center; /* Aligns radio button and input vertically */
+    gap: 10px; /* Space between radio and input */
+}
+
+/* Label to ensure radio button and input are grouped together */
+.option-label {
+    display: flex;
+    align-items: center; /* Aligns radio button and input vertically */
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.option-radio {
+    margin: 0; /* Removes margin */
+    pointer-events: none;
+    
+    accent-color: #4285f4; /* Styling radio button */
+    flex-shrink: 0; /* Prevents the radio from shrinking */
+}
+
+.option-text {
+    flex: 1; /* Ensures input field takes remaining space */
+    padding: 8px;
+    border: none;
+    border-bottom:  1px solid #0056b3 ;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.option-text:focus {
+    border-color: #4285f4; /* Highlight border on focus */
+}
+/* Delete button (X) */
+.delete-option {
+    all:unset;
+   background-color: none;
+   color: grey;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 5px;
+    
+}
+.delete-option:hover{
+   
+    background:none;
+}
+
+
+/* Button to add more options */
+.add-option {
+    margin-top: 5px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: start;
+    transition: background-color 0.2s;
+}
+
+.add-option:hover {
+    background-color: #3367d6; /* Slightly darker on hover */
+}
+
+
+
+
+.add-option:hover {
+    background-color: #3367d6; /* Slightly darker on hover */
+}
+
+/*------------------------------------------------------cbt exam settings ------------------------------------------*/
+
+        .settings-container {
+           
+            max-width: 800px;
+            margin: 0 auto;
+            background: #06afaf;
+            color:#fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .settings-container h2{
+            text-align: left;
+        }
+        /* Exam Title and Description */
+.form-group input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    resize: none;
+    
+}
+
+
+        .form-group {
+           
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="file"] {
+            display: block;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch input {
+            margin-right: 10px;
+        }
+
+        .form-group button {
+            
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /*-----------------------------switch ----------------------------------------------
+        /* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .settings_header{
+font-size: medium;
+ font-weight: bold;
+ color: #ffff;
+  }
+  .flex-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+   
+ 
+  }
+  .flex-box .toggle-switch{
+    float: right;
+    
+  }
+  
+  .custom-hr-gradient {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, #ddd, #ffff);
+    margin: 12px 0;
+  }
+  .select-option {
+    width: 100%;
+    max-width: 300px; /* Set a width limit */
+    margin: 20px 0;
+    position: relative; /* For advanced positioning if needed */
+}
+
+/* Styling the select element */
+.candidate-list {
+    width: 100%; /* Full width */
+    padding: 10px 15px; /* Add padding for a better look */
+    font-size: 16px; /* Increase font size */
+    font-weight: bold;
+    color: #333; /* Dark text color */
+    background-color: #f9f9f9; /* Light background */
+    border: 2px solid #ddd; /* Border styling */
+    border-radius: 5px; /* Rounded corners */
+    appearance: none; /* Remove default browser styling */
+    -webkit-appearance: none; /* Safari compatibility */
+    -moz-appearance: none; /* Firefox compatibility */
+    cursor: pointer; /* Change cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect */
+.candidate-list:hover {
+    border-color: #3498db; /* Change border color */
+}
+
+/* Focus effect */
+.candidate-list:focus {
+    outline: none; /* Remove outline */
+    border-color: #4CAF50; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Glow effect */
+}
+
+/* Adding a custom arrow */
+.select-option::after {
+    content: '▼'; /* Unicode character for arrow */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #333;
+    pointer-events: none; /* Ensure it doesn't block clicks */
+}
+
+/*------------------------------------------rensponse---------------------------------------------
+/* Responses Section */
+.responses-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+   
+}
+
+.responses-section h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+
+.response-filters input, .response-filters button {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.response-filters button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.response-filters button:hover {
+    background-color: #0056b3;
+}
+
+.responses-list {
+    margin-top: 20px;
+}
+
+.responses-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.responses-table th, .responses-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  
+}
+
+.responses-table th {
+    background-color: #f2f2f2;
+    
+   
+
+}
+
+
+.view-responses-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.view-responses-btn:hover {
+    background-color: #218838;
+}
+
+/* Modal (Response Details) */
+.response-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.table-responsive {
+    max-height: 500px; /* Adjust as needed */
+    overflow-y: auto;
+}
+.mb-4{
+    margin-bottom: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+    font-size: 1.6rem;
+    color: #333;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.response-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.response-actions button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.response-actions button:hover {
+    background-color: #218838;
+}
+
+/* Close Button */
+.close-btn {
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+/*----------------------------------------response------------------------------------*/
+/*--------------------------select answers-----------------------------------------*/
+.select-answer{
+display: flex;
+margin-top: 10px;
+
+
+
+
+}
+.answer{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    resize: none;
+
+}
+
+/*---------------------------------pop up publish modal---------------------------------------- */
+ /* Popup Modal */
+ /* Basic page styling */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Popup Modal */
+.popupmodal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupmodal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.url-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.copy-button {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.copy-button:hover {
+    background-color: #218838;
+}
+
+.close-modal {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.message {
+    color: green;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+.fa-spinner{
+    animation: animate 1s ease infinite;
+  
+  }
+  @keyframes animate {
+    0%{transform: rotate(0turn);
+  }
+  100%{
+    transform: rotate(1turn)
+  }
+  
+  }
+
+
+
+  /*-------------------------------------create post -------------------------------------------------------------- */
+  html{
+    scroll-behavior: smooth;
+}
+/* Scoped Styling for Upload Modal */
+#upload-modal-container {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+}
+
+#upload-modal-container .upload-modal {
+    display: block;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#upload-modal-container .upload-modal-content {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border-radius: 10px;
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#upload-modal-container .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+}
+
+#upload-modal-container .close-btn:hover {
+    color: #f44336;
+}
+
+#upload-modal-container h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+#upload-modal-container textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    resize: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+#upload-modal-container textarea:focus {
+    outline: none;
+    border-color: #1da1f2;
+}
+
+#upload-modal-container input[type="file"] {
+    margin-top: 15px;
+}
+
+#upload-modal-container .sample-format {
+    margin-top: 20px;
+    background-color: #f1f8ff;
+    border: 1px solid #cce5ff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    color: #004085;
+}
+
+#upload-modal-container button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#upload-modal-container button:hover {
+    background-color: #218838;
+}
+/* CSS for disabled button */
+.btn-add-question:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+.upload-file-question{
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+
+}
+  /* Horizontal scrolling for responses-section */
+@media (max-width: 800px) {
+    .responses-section {
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent content from wrapping */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile devices */
+        padding: 8px; /* Add padding for better appearance */
+    }
+
+    /* Style adjustments for inner elements */
+    .responses-section .response-item {
+        display: inline-block; /* Ensure items are aligned horizontally */
+        margin-right: 10px; /* Add spacing between items */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .responses-section .response-item:last-child {
+        margin-right: 0; /* Remove margin for the last item */
+    }
+}
+
+

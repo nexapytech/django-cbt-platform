@@ -9,9 +9,4 @@ __pycache__/
 # Virtual environment
 venv/
 
-# Django
-staticfiles/
-media/
 
-# Environment variables
-.env

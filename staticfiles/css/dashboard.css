@@ -1,0 +1,196 @@
+.dashboard {
+    padding: 20px;
+    background-color: #f4f7fa;
+    margin-top: 20px;
+}
+
+
+
+.welcome {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+
+}
+.verification-header {
+    background-color: #b3b0b1;
+    color: #fff;
+    padding: 10px 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    
+}
+.verification-header span {
+    flex-grow: 1;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.verification-header a {
+    color: #b12222;
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.resendbtn-spinner {
+    margin-left: 5px;
+}
+.verification-header form {
+    display: inline;
+}
+.fa-spinner{
+    animation: animate 1s ease infinite;
+  
+  }
+  @keyframes animate {
+    0%{transform: rotate(0turn);
+  }
+  100%{
+    transform: rotate(1turn)
+  }
+  
+  }
+  #mobile-menu{
+      color:#ffff;
+      cursor: pointer;
+       
+  }
+  
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: center;
+}
+
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 24px;
+    color: #006064;
+}
+
+.recent-activity, .upcoming-exams, .notifications, .quick-actions {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.quick-actions .action-btn {
+    background-color: #006064;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quick-actions .action-btn:hover {
+    background-color: #004d40;
+}
+
+
+footer {
+    background-color: #006064;;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    bottom: 0;
+    width: 100%;
+  }
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+  }
+  #screen{
+    display:none;
+  }
+  .messages {
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Success message */
+.messages .alert-success {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+}
+
+/* Error message */
+.messages .alert-error {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+  @media (max-width: 800px){
+  .welcome h2{
+    font-size: 18px;
+  }
+  .recent-activity h3{
+    font-size: 17px;
+
+  }
+  .recent-activity tr{
+    font-size: 13px;
+  }
+  .action-button button, a{
+   margin-bottom: 5px; 
+   padding: 10px;  
+}
+}
+

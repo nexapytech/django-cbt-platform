@@ -1,0 +1,600 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body and Container */
+body {
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+h1{
+    font-size: 100px;
+}
+ .justify{
+    text-align: justify !important;
+    text-justify: inter-word; /* Ensures better word spacing for justification */
+    word-spacing: 0.1em; /* Adjust this value to reduce large gaps */
+    hyphens: auto; /* Automatically hyphenates words to prevent large spaces */
+    line-height: 1.5; /* Optional: Improves readability */
+    padding:15px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+.navbar  #mobile-menu{
+display:none;
+}
+.container-flex { 
+display:flex;
+justify-content: space-between;
+align-items: center;
+align-items: center;
+
+
+
+}
+/* Header */
+.header {
+    
+    background-color: #005f72;
+    padding: 20px 0;
+    
+}
+
+.header .logo h1 {
+    color: white;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.navbar ul {
+    list-style: none;
+    text-align: right;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #008080;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    background-color: #ff5c5c;
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background-color: #e44d4d;
+}
+
+/* Features Section */
+.features {
+    padding: 50px 0;
+    background-color: #f4f7fa;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.feature {
+    display: inline-block;
+    width: 22%;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+}
+
+/* Signup Section */
+.signup {
+    padding: 50px 0;
+    background-color: #ffffff;
+}
+
+.signup h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.signup-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form .form-group {
+    margin-bottom: 20px;
+}
+
+.signup-form .form-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+
+.signup-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #005f72;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    background-color: #003d45;
+}
+
+/* Footer */
+.footer {
+    margin-top:30px ;
+    margin-bottom:8px; 
+    margin-left:8px; 
+    margin-right:8px ;
+    background-color: #005f72;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/* About Section */
+.about {
+    padding: 50px 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Mission Section */
+.mission {
+    background-color: #d6eaff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.mission h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Features Section */
+.features {
+    padding: 50px 0;
+    text-align: center;
+}
+.ourfeature{
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    
+}
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background: white;
+
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds smooth hover effect */
+   
+}
+.card:hover{
+    transform: scale(1.02); /* Slight zoom-in on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+.features h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.feature {
+    display: inline-block;
+    width: 45%;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.feature h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+}
+
+/* Contact Section */
+
+
+
+.contact  {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+  }
+
+/*----------------------signin modal----------------------------------------------*/
+input[type="text"],
+input[type="email"],
+input[type="password"]
+ {
+ width:100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #0056b3;
+  border-radius: 4px;
+
+}
+
+button[type="submit"] {
+    width: 100%;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #005f72;
+  text-align:center;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.btn-container{
+    text-align: center;
+}
+
+
+.signinmodal {
+    display:none;
+
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+  }
+  
+  
+  
+  .signinmodal-content {
+    background-color: #eaf1f7;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+  }
+  .close-btn {
+    font-size: 25px;         /* Adjusts the size of the '×' symbol */
+    color: #333;             /* Sets the color of the symbol */
+    cursor: pointer;         /* Changes the cursor to a pointer on hover */
+                                
+                             /* Adjust the top position */
+    float: right;                         /* Adjust the right position */
+    background-color: transparent;  /* No background color */
+    border: none;            /* Removes any default border */
+    outline: none;           /* Removes the default outline when focused */
+    font-weight: bold;       /* Makes the symbol bold */
+    transition: color 0.3s;  /* Smooth transition for hover effects */
+}
+
+.close-btn:hover {
+    color: #e00404;              /* Changes color when hovering over the button */
+}
+
+.close-btn:focus {
+    outline: none;           /* Ensures no outline appears when focused */
+}
+
+.verifiedmodal {
+    display:none;
+
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+  }
+  
+  
+  
+  .verifiednmodal-content {
+    background-color: #eaf1f7;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+  }
+  .verifiedclose-btn {
+    font-size: 25px;         /* Adjusts the size of the '×' symbol */
+    color: #333;             /* Sets the color of the symbol */
+    cursor: pointer;         /* Changes the cursor to a pointer on hover */
+                                
+                             /* Adjust the top position */
+    float: right;                         /* Adjust the right position */
+    background-color: transparent;  /* No background color */
+    border: none;            /* Removes any default border */
+    outline: none;           /* Removes the default outline when focused */
+    font-weight: bold;       /* Makes the symbol bold */
+    transition: color 0.3s;  /* Smooth transition for hover effects */
+}
+
+.verifiedclose-btn:hover {
+    color: #e00404;              /* Changes color when hovering over the button */
+}
+
+.verifiedclose-btn:focus {
+    outline: none;           /* Ensures no outline appears when focused */
+}
+
+/*-----------------------------------------------------icon------------------------ */
+.fa-spinner{
+  animation: animate 1s ease infinite;
+
+}
+@keyframes animate {
+  0%{transform: rotate(0turn);
+}
+100%{
+  transform: rotate(1turn)
+}
+
+}
+#mobile-menu{
+    color:#ffff;
+    cursor: pointer;
+     
+}
+
+ 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right:0;
+    padding-top:20px;
+    margin-right: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    background-color: #274a61;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(80, 75, 75, 0.2);
+    border-radius: 20px;
+    border: 2px solid rgb(226, 226, 226);
+  }
+  
+
+   
+  
+  
+  
+  
+  
+  
+  .dropdown-content a {
+    
+    float: none;
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    padding:10px;
+    display: block;
+    text-align: left;
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-size:14px;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #6c797a;
+    border-radius: 20px;
+  }
+  
+
+@media (max-width: 900px) {
+    .feature {
+        width: 100%; /* Ensure the element spans full width */
+       
+    }
+}
+
+@media (max-width: 800px) {
+    .navbar  #mobile-menu{
+        display:block;
+    }
+    .header .logo h1{
+        font-size:20px ;
+
+    }
+    .hero h2{
+        font-size: 25px;
+    }
+    .hero p{
+        font-size: 17px;
+    }
+    .about h2{
+        font-size: 22px;
+    }
+    .about p{
+        font-size: 17px;
+    }
+    .mission h2{
+        font-size: 22px;
+    }
+    .mission p{
+        font-size: 17px;
+    }
+    .mission h2{
+        font-size: 22px;
+    }
+    .mission p{
+        font-size: 17px;
+    }
+    .features h2{
+        font-size: 22px;
+    }
+    .features p{
+        font-size: 17px;
+    }
+   .container{
+       font-size:20px;
+   }
+   .container h2{
+    font-size: 20px;
+   }
+   p{
+    font-size: 15px;
+   }
+   .feature h3{
+    font-size:20px
+
+   }
+   .feature p{
+    font-size:15px;
+   }
+    .feature {
+        
+        width: 100%; /* Ensure the element spans full width */
+        display: block;
+        align-items: center;
+        text-align: center;
+       
+    }
+    .navbar ul{
+        display:none
+    }
+   
+  
+}
