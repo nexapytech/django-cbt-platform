@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pytech CBT | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+<body>
+    <!------------------------------------------- Header Section --------------------------------------------->
+    <header class="dashboard-header">
+        
+        <div class="container">
+            <div class="dashboard-header-content">
+            <div class="logo">
+                <h1>PyLearn CBT</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="#">My Exams</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#" class="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Section -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome">
+                <h2>Welcome, {{ user.username }}!</h2>
+                <p>Manage your exams, courses, and user settings below.</p>
+            </section>
+
+            <!-- Create Exam Section -->
+            <section class="create-exam">
+                <h3>Create a New Exam</h3>
+                <form action="#" method="post">
+                    <label for="exam-title">Exam Title:</label>
+                    <input type="text" id="exam-title" name="exam-title" required>
+
+                    <label for="exam-description">Description:</label>
+                    <textarea id="exam-description" name="exam-description" rows="3" required></textarea>
+
+                    <label for="exam-duration">Duration (in minutes):</label>
+                    <input type="number" id="exam-duration" name="exam-duration" required>
+
+                    <label for="exam-questions">Add Questions:</label>
+                    <button type="button" id="add-question">+ Add Question</button>
+
+                    <div id="question-list"></div>
+
+                    <button type="submit" class="submit-btn">Save Exam</button>
+                </form>
+            </section>
+
+            <!-- Courses Section -->
+            <section class="courses">
+                <h3>Manage Courses</h3>
+                <p>You can view, edit, or delete your courses here.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Introduction to Python</td>
+                            <td>A beginner course on Python programming.</td>
+                            <td>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                        </tr>
+                        <!-- More courses -->
+                    </tbody>
+                </table>
+                <button class="add-course-btn">+ Add New Course</button>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="settings">
+                <h3>User Settings</h3>
+                <form action="#" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="{{ user.username }}" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" required>
+
+                    <label for="password">New Password:</label>
+                    <input type="password" id="password" name="password">
+
+                    <button type="submit" class="update-settings-btn">Update Settings</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 PyLearnCBT. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

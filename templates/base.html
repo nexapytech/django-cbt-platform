@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NexapyCBT - Create & Take CBT Exams</title>
+            <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/nexapytech.png' %}">
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Meta Information for SEO -->
+    <!-- Meta Information for SEO -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create, Take, and Manage Computer-Based Tests Easily with Nexapy CBT. A simple, powerful platform for educators and learners to handle CBTs securely and flexibly.">
+    <meta name="keywords" content="Nexapy CBT, Computer-Based Tests, online exams, CBT platform, flexible testing, secure exams, Nexapy Technologies">
+    <meta name="author" content="Nexapy Technologies">
+    
+   
+    
+
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Nexapy CBT - Simplify Computer-Based Testing">
+    <meta property="og:description" content="We bring you a simple, powerful platform to create, take, and manage Computer-Based Tests (CBTs) for any subject or purpose.">
+    <meta property="og:image" content="https://nexapytechnologies.com/static/images/nexapytech.png">
+    <meta property="og:url" content="https://nexapytechnologies.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexapy CBT - Simplify Online Exams">
+    <meta name="twitter:description" content="Easily create, take, and manage Computer-Based Tests (CBTs) with Nexapy CBT. A flexible and secure platform for all testing needs.">
+    <meta name="twitter:image" content="https://nexapytechnologies.com/static/images/nexapytech.png">
+    
+    
+  
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <!------------------------------------------- Header Section --------------------------------------------->
+    <header class="dashboard-header">
+        
+        <div class="container">
+            <div class="dashboard-header-content">
+            <div class="logo">
+                <h1>Nexapy CBT </h1>
+            </div>
+            <div class="dropdownonmouse">
+                <div class="profile">
+                    <i class="fa-solid fa-user"> <i class="fa-solid fa-caret-down"></i></i>
+                </div>
+                    <div class="dropdown-content">
+                    <a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %} active {% endif %}">Dashboard</a>
+                    
+                    <a href="{% url 'my_exams' %}" class="{%  if request.resolver_match.url_name == 'my_exams' %}  active {% endif %}">My Exams</a>
+
+
+                    <a href="{% url 'logout' %}" class="logout">Logout</a>
+            
+                </div>
+                </div>
+            
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %} active {% endif %}">Dashboard</a></li>
+                   
+                    <li><a href="{% url 'my_exams' %}" class="{%  if request.resolver_match.url_name == 'my_exams' %}  active {% endif %}">My Exams</a></li>
+
+
+                    <li><a href="{% url 'logout' %}" class="logout-btn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        </div>
+    </header>
+<script>
+    //-------------------------------dropdown moounse------------------
+const dropdown = document.querySelector('.dropdownonmouse');
+const dropdownContent = document.querySelector('.dropdown-content');
+
+// Toggle visibility on click
+dropdown.addEventListener('click', () => {
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    } else {
+        dropdownContent.style.display = 'block';
+    }
+});
+</script>
+
+ 
+        {% block content %}
+  
+      
+
+
+        {% endblock %}
+
+    
+
+</body>
+</html>

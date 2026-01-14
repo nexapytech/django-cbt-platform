@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification - Nexapy CBT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            color: #274a61;
+        }
+        .content {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #274a61;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Nexapy CBT</h1>
+        <div class="content">
+            <p>Hello <b>{{ user.username }}</b>,</p>
+            <p>Welcome to Nexapy CBT! We are excited to have you on board.</p>
+            <p>To activate your account, please click the link below:</p>
+            <a href="http://{{ domain }}{% url 'verification' uidb64=uidb64 token=token %}" class="btn">Verify Email</a>
+            <p>If the button above doesn't work, you can copy and paste the following link into your browser:</p>
+            <p><a href="http://{{ domain }}{% url 'verification' uidb64=uidb64 token=token %}">http://{{ domain }}{% url 'verification' uidb64=uidb64 token=token %}</a></p>
+            <p>Once you verify your email, you'll be able to start using Nexapy CBT!</p>
+            <p>If you have any questions or need assistance, <a href="mailto:developer@nexapytechnologies.com">contact our support team</a> </p>
+
+            <p>Best regards,</p>
+            <p><b>The Nexapy Technologies Team</b></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Nexapy Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
