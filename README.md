@@ -114,14 +114,15 @@ make lint
 
 ---
 
-### Optional MySQL:
-**uncomment:**
+### Optional MySQL
+Uncomment the following variables in your `.env` file if you want to use MySQL:
+
+```env
 DB_NAME='cbt_db'
 DB_USER='cbt_user'
 DB_PASSWORD='cbt_pass'
 DB_HOST='localhost'
-DB_PORT=3306
-
+DB_POR
 
 ### Start containers
 ``` bash
@@ -159,6 +160,7 @@ docker build -t nexapycbt .
 docker run -p 8000:8000 nexapycbt
 
 ```
+
 
 
 
