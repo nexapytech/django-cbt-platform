@@ -137,18 +137,13 @@ docker-compose run web python manage.py createsuperuser
 docker-compose down
 
 ```
-
-
 ### Static Files (Production)
 Static files are generated using: 
 
  python manage.py collectstatic
 
- ```
-
-
-
-
+ ---
+ 
 ### ⚙️ Local Setup (Linux / Windows)
 
 ### 1. Clone the repo
@@ -164,6 +159,7 @@ docker build -t nexapycbt .
 docker run -p 8000:8000 nexapycbt
 
 ```
+
 
 
 
