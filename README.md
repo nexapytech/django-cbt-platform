@@ -122,7 +122,8 @@ DB_NAME='cbt_db'
 DB_USER='cbt_user'
 DB_PASSWORD='cbt_pass'
 DB_HOST='localhost'
-DB_POR
+DB_PORT=3306
+```
 
 ### Start containers
 ``` bash
@@ -160,6 +161,7 @@ docker build -t nexapycbt .
 docker run -p 8000:8000 nexapycbt
 
 ```
+
 
 
 
