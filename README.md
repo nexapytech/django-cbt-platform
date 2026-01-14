@@ -2,6 +2,11 @@
 
 # NexapyCBT  Python Django Computer-Based Testing Platform
 
+## 🌐 Live Demo
+
+**Watch the live demo video:** [YouTube Demo](https://www.youtube.com/watch?v=j_YBNhYRwJ)
+
+--- 
 
 ## 🛠 Tech Stack
 - **Language:** Python 3
@@ -47,44 +52,27 @@ This approach improves automated assessment while keeping human oversight where 
 
 ---
 
-## 🧠 NLP & spaCy Integration
-NexapyCBT integrates spaCy to enhance evaluation of non-multiple-choice (theory/subjective) questions.
-
-**How it works:**
-1. Theory answers are processed using text similarity techniques.
-2. Student responses are compared with expected answers.
-3. spaCy’s pretrained language model enables semantic similarity matching.
-
-This allows fair grading even when students use different wording.  
-Instructors can still review or override results when necessary.  
-This approach improves automated assessment while keeping human oversight where required.
-
-## 🌐 Live Demo
-
-**Watch the live demo video:** [YouTube Demo](https://www.youtube.com/watch?v=j_YBNhYRwJ)
-
----
-
 ### Screenshots 
 
 **Login Screen**  
-![Login](https://nexapytechnologies.com/images/login.png)
-
-**Dashboard**  
-![Dashboard](https://nexapytechnologies.com/images/dashboard.png)
+![Login](screenshots/login.png)
 
 **Create Exam**  
-![Create Exam](https://nexapytechnologies.com/images/takeexam.png)
+![Create Exam](screenshots/createexam.png)
 
+**Dashboard**  
+![Dashboard](screenshots/dashboard.png)
 
 **Results Page**  
-![Results](https://nexapytechnologies.com/images/result.png)
+![Results](screenshots/result.png)
 
 
 ---
 
 **Example Grading with spaCy:**
 
+
+```python
 import spacy
 
 nlp = spacy.load("en_core_web_md")
@@ -102,11 +90,12 @@ else:
 
 print("Grade:", grade)
 
----
+```
 
 ### ⚙️ Make Commands
 To make your repo **easy to run and test**, we provide a Makefile:
 ### Run the API locally
+```bash
 make run
 ### Run all tests
 make test
@@ -121,6 +110,8 @@ make createsuperuser
 ### Run code linting & formatting checks
 make lint
 
+```
+
 ---
 
 ### Optional MySQL:
@@ -133,6 +124,7 @@ DB_PORT=3306
 
 
 ### Start containers
+``` bash
 docker-compose up
 
 ### Apply migrations (if not using auto-run)
@@ -144,10 +136,15 @@ docker-compose run web python manage.py createsuperuser
 ### Stop containers
 docker-compose down
 
+```
+
 
 ### Static Files (Production)
 Static files are generated using: 
+
  python manage.py collectstatic
+
+ ```
 
 
 
@@ -155,14 +152,18 @@ Static files are generated using:
 ### ⚙️ Local Setup (Linux / Windows)
 
 ### 1. Clone the repo
+``` bash
 git clone https://github.com/nexapytech/django-cbt-platform.git.
 
-cd django-cbt-platform  
+cd django-cbt-platform 
 
+```
 ### Docker Setup (Recommended)
 ```bash
 docker build -t nexapycbt .
 docker run -p 8000:8000 nexapycbt
+
+```
 
 
 
