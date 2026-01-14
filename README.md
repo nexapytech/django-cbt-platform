@@ -47,19 +47,107 @@ This approach improves automated assessment while keeping human oversight where 
 
 ---
 
+## 🧠 NLP & spaCy Integration
+NexapyCBT integrates spaCy to enhance evaluation of non-multiple-choice (theory/subjective) questions.
+
+**How it works:**
+1. Theory answers are processed using text similarity techniques.
+2. Student responses are compared with expected answers.
+3. spaCy’s pretrained language model enables semantic similarity matching.
+
+This allows fair grading even when students use different wording.  
+Instructors can still review or override results when necessary.  
+This approach improves automated assessment while keeping human oversight where required.
+
+## 🌐 Live Demo
+
+**Watch the live demo video:** [YouTube Demo](https://www.youtube.com/watch?v=j_YBNhYRwJ)
+
+---
+
+### Screenshots / GIFs
+
+**Login Screen**  
+![Login](https://nexapytechnologies.com/images/login.png)
+
+**Create Exam**  
+![Create Exam](https://nexapytechnologies.com/images/create_exam.png)
+
+**Take Exam**  
+![Take Exam](https://nexapytechnologies.com/images/take_exam.png)
+
+**Results Page**  
+![Results](https://nexapytechnologies.com/images/results.png)
+
+> 💡 Tip: You can replace these images with GIFs to show real interactions for more engagement.
+
+
+
+**Example Grading with spaCy:**
+
+import spacy
+
+nlp = spacy.load("en_core_web_md")
+
+correct_answer = nlp("The capital of France is Paris.")
+student_answer = nlp("Paris is the capital of France.")
+
+similarity_score = student_answer.similarity(correct_answer)
+print(f"Similarity Score: {similarity_score:.2f}")
+
+if similarity_score > 0.85:
+    grade = "Correct"
+else:
+    grade = "Needs review"
+
+print("Grade:", grade)
+
+
 ## ⚙️ Make Commands
 To make your repo **easy to run and test**, we provide a Makefile:
 ### Run the API locally
 make run
-
 ### Run all tests
 make test
-
+### make up
+make up
+### Stop docker Container
+make down
+### apply Django Migrations
+make migrate
+### make admin user
+make createsuperuser
+### Run code linting & formatting checks
+make lint
 ---
+### Optional MySQL:
+# uncomment:
+DB_NAME='cbt_db'
+DB_USER='cbt_user'
+DB_PASSWORD='cbt_pass'
+DB_HOST='localhost'
+DB_PORT=3306
+
+
+# Start containers
+docker-compose up
+
+# Apply migrations (if not using auto-run)
+docker-compose run web python manage.py migrate
+
+# Create a superuser
+docker-compose run web python manage.py createsuperuser
+
+# Stop containers
+docker-compose down
+
 
 ### Static Files (Production)
 Static files are generated using: 
  python manage.py collectstatic
+
+
+
 
 ## ⚙️ Local Setup (Linux / Windows)
 
