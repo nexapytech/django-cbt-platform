@@ -65,23 +65,23 @@ This approach improves automated assessment while keeping human oversight where 
 
 ---
 
-### Screenshots / GIFs
+### Screenshots 
 
 **Login Screen**  
 ![Login](https://nexapytechnologies.com/images/login.png)
 
-**Create Exam**  
-![Create Exam](https://nexapytechnologies.com/images/create_exam.png)
+**Dashboard**  
+![Dashboard](https://nexapytechnologies.com/images/dashboard.png)
 
-**Take Exam**  
-![Take Exam](https://nexapytechnologies.com/images/take_exam.png)
+**Create Exam**  
+![Create Exam](https://nexapytechnologies.com/images/takeexam.png)
+
 
 **Results Page**  
-![Results](https://nexapytechnologies.com/images/results.png)
-
-> 💡 Tip: You can replace these images with GIFs to show real interactions for more engagement.
+![Results](https://nexapytechnologies.com/images/result.png)
 
 
+---
 
 **Example Grading with spaCy:**
 
@@ -102,8 +102,9 @@ else:
 
 print("Grade:", grade)
 
+---
 
-## ⚙️ Make Commands
+### ⚙️ Make Commands
 To make your repo **easy to run and test**, we provide a Makefile:
 ### Run the API locally
 make run
@@ -119,9 +120,11 @@ make migrate
 make createsuperuser
 ### Run code linting & formatting checks
 make lint
+
 ---
+
 ### Optional MySQL:
-# uncomment:
+**uncomment:**
 DB_NAME='cbt_db'
 DB_USER='cbt_user'
 DB_PASSWORD='cbt_pass'
@@ -129,16 +132,16 @@ DB_HOST='localhost'
 DB_PORT=3306
 
 
-# Start containers
+### Start containers
 docker-compose up
 
-# Apply migrations (if not using auto-run)
+### Apply migrations (if not using auto-run)
 docker-compose run web python manage.py migrate
 
-# Create a superuser
+### Create a superuser
 docker-compose run web python manage.py createsuperuser
 
-# Stop containers
+### Stop containers
 docker-compose down
 
 
@@ -149,7 +152,7 @@ Static files are generated using:
 
 
 
-## ⚙️ Local Setup (Linux / Windows)
+### ⚙️ Local Setup (Linux / Windows)
 
 ### 1. Clone the repo
 git clone https://github.com/nexapytech/django-cbt-platform.git.
