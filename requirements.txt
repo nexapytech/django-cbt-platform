@@ -9,5 +9,5 @@ spacy
 pillow
 whitenoise
 six
-numpy 
-pandas
+
+
