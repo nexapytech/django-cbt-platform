@@ -3,11 +3,12 @@ PyMySQL
 openpyxl
 requests
 python-decouple
-numpy
 pandas
+numpy
 spacy
 pillow
 whitenoise
 six
+
 
 
